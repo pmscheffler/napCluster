@@ -17,7 +17,7 @@
 
 function headers_to_json(r) {
     var kvpairs = '';
-    for (var header in req.headers) {
+    for (var header in r.headers) {
         if ( kvpairs.length ) {
             kvpairs += ',';
         }
