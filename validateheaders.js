@@ -17,15 +17,15 @@
 
 function headers_to_json(r) {
     var kvpairs = '';
-    for (var header in r.headers) {
+    for (var header in r.rawHeadersIn) {
         if ( kvpairs.length ) {
             kvpairs += ',';
         }
         kvpairs += '"' + header + '":';
-        if ( isNaN(r.headers[header]) ) {
-            kvpairs += '"' + r.headers[header] + '"';
+        if ( isNaN(r.rawHeadersIn[header]) ) {
+            kvpairs += '"' + r.rawHeadersIn[header] + '"';
         } else {
-            kvpairs += req.headers[header];
+            kvpairs += r.rawHeadersIn[header];
         }
     }
     return kvpairs;
