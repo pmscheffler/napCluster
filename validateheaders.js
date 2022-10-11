@@ -15,6 +15,20 @@
 
 */
 
+let required_headers = ['required-header-test'];
+let optional_headers = ['optional-header-test'];
+let disallowed_headers = ['disallowed-header-test'];
+
+function add_header(header, headerType){
+    if (headerType.tostring().toLowerCase() == 'required') {
+        required_headers.push(header);
+    }else if (headerType.toString().toLowerCase() == 'optional'){
+        optional_headers.push(header);
+    } else if (headerType.toString().toLowerCase() == 'disallowed'){
+        disallowed_headers.push(header);
+    }
+}
+
 function headers_to_json(r) {
     var kvpairs = '';
     for (var header in r.rawHeadersIn) {
@@ -22,6 +36,11 @@ function headers_to_json(r) {
             kvpairs += ',';
         }
         kvpairs += '"' + header + '":';
+
+        if(check_disallowed_header(header)) {
+            r.log("We have a disallowed header");
+        }
+
         if ( isNaN(r.rawHeadersIn[header]) ) {
             kvpairs += '"' + r.rawHeadersIn[header] + '"';
         } else {
@@ -29,6 +48,21 @@ function headers_to_json(r) {
         }
     }
     return kvpairs;
+}
+
+function check_required_headers(){
+
+}
+
+function check_optional_header() {
+
+}
+
+function check_disallowed_header(header) {
+    if (disallowed_headers.includes(header)) {
+        return true;
+    }
+    return false;
 }
 
 export default {headers_to_json}
