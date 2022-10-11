@@ -35,16 +35,26 @@ function headers_to_json(r) {
         if ( kvpairs.length ) {
             kvpairs += ',';
         }
-        kvpairs += '"' + header + '":';
+        kvpairs += '"' + r.rawHeadersIn[header][0] + '';
 
-        if(check_disallowed_header(header)) {
+        if(check_disallowed_header(r.rawHeadersIn[header][0])) {
+            kvpairs += '(disallowed)":'
             r.log("We have a disallowed header");
+        } else if (check_optional_header(r.rawHeadersIn[header][0])) {
+            kvpairs += '(optional)":'
+            r.log("We have an optional header");
+        } else if (check_required_headers(r.rawHeadersIn[header][0])) {
+            kvpairs += '(required)":'
+            r.log("We have a required header");
+        } else {
+            kvpairs += '(unexpected)":'
+            r.log("We have an unexpected header: " + r.rawHeadersIn[header][0]);
         }
 
         if ( isNaN(r.rawHeadersIn[header]) ) {
-            kvpairs += '"' + r.rawHeadersIn[header] + '"';
+            kvpairs += '"' + r.rawHeadersIn[header][1] + '"';
         } else {
-            kvpairs += r.rawHeadersIn[header];
+            kvpairs += r.rawHeadersIn[header][1];
         }
     }
     return kvpairs;

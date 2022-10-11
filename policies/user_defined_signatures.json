@@ -1,0 +1,18 @@
+{
+    "softwareVersion": "15.1.0",
+    "tag": "HeaderValidation",
+    "revisionDatetime": "2022-10-22T18:00:00Z",
+    "signatures": [
+        {
+            "name": "Unexpected_Header",
+            "description": "Raised when a header is not Optional or Required",
+            "rule": "content:\"F5_VIOLATION_Unexpected_Header\"; nocase;",
+            "signatureType": "request",
+            "attackType": {
+                "name": "Brute Force Attack"
+            },
+            "risk": "medium",
+            "accuracy": "medium"
+        }
+    ]
+}

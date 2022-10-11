@@ -10,7 +10,29 @@
         "customXffHeaders": [],
         "trustXff": true
     },
+    "signature-requirements": [
+      {
+        "tag": "HeaderValidation"
+      }
+    ],
+    "signatures": [
+      {
+        "name": "Unexpected_Header",
+        "tag": "HeaderValidation"
+      }
+    ],
     "signature-sets": [
+      {
+        "name": "HeaderValidation_set", 
+        "block": true,
+        "alarm": true,
+        "signatureSet": {
+          "filter": {
+            "tagValue": "HeaderValidation",
+            "tagFilter": "eq"
+          }
+        }
+      },
       {
         "name": "High Accuracy Signatures",
         "alarm": true,
