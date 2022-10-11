@@ -31,4 +31,4 @@ function headers_to_json(r) {
     return kvpairs;
 }
 
-export default {kvpairs}
+export default {headers_to_json}
