@@ -32,4 +32,7 @@ services:
       dockerfile: Dockerfile.pool
     deploy:
       replicas: 2
+    volumes:
+      - ./validateheaders.js:/etc/nginx/validateheaders.js:ro
+
     
