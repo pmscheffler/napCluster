@@ -63,10 +63,10 @@ function headers_to_json(r) {
 function validateheaders(r){
     for(var header in r.rawHeadersIn){
         if(!(check_required_headers(header[0]))){
-            return false;
+            return "F5_VIOLATION_Unexpected_Header";
         }
     }
-    return true;
+    return "";
 }
 
 function check_required_headers(){
