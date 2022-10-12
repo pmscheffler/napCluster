@@ -23,7 +23,15 @@ services:
       - ./policies:/etc/nginx/json:ro
       - ./validateheaders.js:/etc/nginx/validateheaders.js:ro
   pool:
-    image: nginxdemos/hello:plain-text
+    # image: nginxdemos/hello:plain-text
+    # deploy:
+    #   replicas: 2
+    image: pool
+    build:
+      context: .
+      dockerfile: Dockerfile.pool
     deploy:
       replicas: 2
-
+    volumes:
+      - ./pool.conf:/etc/nginx/nginx.conf:ro
+    
