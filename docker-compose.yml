@@ -32,6 +32,4 @@ services:
       dockerfile: Dockerfile.pool
     deploy:
       replicas: 2
-    volumes:
-      - ./pool.conf:/etc/nginx/nginx.conf:ro
     
