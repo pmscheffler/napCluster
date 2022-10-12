@@ -6,9 +6,28 @@
     },
     "applicationLanguage": "utf-8",
     "enforcementMode": "blocking",
+    "blocking-settings": {
+      "violations": [
+        {
+          "name": "VIOL_JSON_FORMAT",
+          "alarm": false,
+          "block": false
+        },
+        {
+          "name": "VIOL_PARAMETER_VALUE_METACHAR",
+          "alarm": false,
+          "block": false
+        },
+        {
+          "name": "VIOL_BOT_CLIENT",
+          "alarm": false,
+          "block": false
+        }
+      ]
+    },
     "general": {
-        "customXffHeaders": [],
-        "trustXff": true
+      "customXffHeaders": [],
+      "trustXff": true
     },
     "signature-requirements": [
       {
@@ -23,7 +42,7 @@
     ],
     "signature-sets": [
       {
-        "name": "HeaderValidation_set", 
+        "name": "HeaderValidation_set",
         "block": true,
         "alarm": true,
         "signatureSet": {
@@ -35,45 +54,45 @@
       },
       {
         "name": "High Accuracy Signatures",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "Command Execution Signatures",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "SQL Injection Signatures",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "Server Side Code Injection Signatures",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "Cross Site Scripting Signatures",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "Generic Detection Signatures (High Accuracy)",
-        "alarm": true,
-        "block": true
+        "alarm": false,
+        "block": false
       },
       {
         "name": "Generic Detection Signatures (High/Medium Accuracy)",
-        "alarm": true
+        "alarm": false
       },
       {
         "name": "Medium Accuracy Signatures",
-        "alarm": true
+        "alarm": false
       },
       {
         "name": "Predictable Resource Location Signatures",
-        "alarm": true
+        "alarm": false
       }
     ]
   }
