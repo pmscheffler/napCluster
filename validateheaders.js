@@ -70,18 +70,18 @@ function validateheaders(r){
 }
 
 function check_required_headers(){
-    if (required_headers.includes(header)) {
-        return true;
-    }
-    return false;
+    // if (required_headers.includes(header)) {
+    //     return true;
+    // }
+    // return false;
 
 }
 
 function check_optional_header() {
-    if (optional_headers.includes(header)) {
-        return true;
-    }
-    return false;
+    // if (optional_headers.includes(header)) {
+    //     return true;
+    // }
+    // return false;
 }
 
 function check_disallowed_header(header) {
