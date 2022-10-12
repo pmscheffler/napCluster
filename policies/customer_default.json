@@ -6,24 +6,10 @@
     },
     "applicationLanguage": "utf-8",
     "enforcementMode": "blocking",
-    "blocking-settings": {
-      "violations": [
-        {
-          "name": "VIOL_JSON_FORMAT",
-          "alarm": false,
-          "block": false
-        },
-        {
-          "name": "VIOL_PARAMETER_VALUE_METACHAR",
-          "alarm": false,
-          "block": false
-        },
-        {
-          "name": "VIOL_BOT_CLIENT",
-          "alarm": false,
-          "block": false
-        }
-      ]
+    "bot-defense": {
+      "settings": {
+        "isEnabled": false
+      }
     },
     "general": {
       "customXffHeaders": [],
