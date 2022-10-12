@@ -60,12 +60,28 @@ function headers_to_json(r) {
     return kvpairs;
 }
 
+function validateheaders(r){
+    for(var header in r.rawHeadersIn){
+        if(!(check_required_headers(header[0]))){
+            return false;
+        }
+    }
+    return true;
+}
+
 function check_required_headers(){
+    if (required_headers.includes(header)) {
+        return true;
+    }
+    return false;
 
 }
 
 function check_optional_header() {
-
+    if (optional_headers.includes(header)) {
+        return true;
+    }
+    return false;
 }
 
 function check_disallowed_header(header) {
@@ -75,4 +91,4 @@ function check_disallowed_header(header) {
     return false;
 }
 
-export default {headers_to_json}
+export default {headers_to_json, validateheaders}
