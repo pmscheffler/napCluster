@@ -69,7 +69,7 @@ function validateheaders(r){
     return "";
 }
 
-function check_required_headers(){
+function check_required_headers(header){
     if (required_headers.includes(header)) {
         return true;
     }
@@ -77,7 +77,7 @@ function check_required_headers(){
 
 }
 
-function check_optional_header() {
+function check_optional_header(header) {
     if (optional_headers.includes(header)) {
         return true;
     }
