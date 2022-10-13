@@ -62,7 +62,13 @@ function headers_to_json(r) {
 
 function validateheaders(r){
     for(var header in r.rawHeadersIn){
-        if(!(check_required_headers(header[0]))){
+        allGoodHeaders = required_headers.concat(optional_headers);
+        const index = allGoodHeaders.findIndex(element =>{
+            return element.toLowerCase() == header[0].toLowerCase();
+        })
+        if (index == -1) {
+            const newHeader = ["F5_VIOLATION_Unexpected_Header", "Invalid"];
+            r.rawHeadersIn.push(newHeader);
             return "F5_VIOLATION_Unexpected_Header";
         }
     }
@@ -70,25 +76,34 @@ function validateheaders(r){
 }
 
 function check_required_headers(header){
-    if (required_headers.includes(header)) {
-        return true;
+    const index = required_headers.findIndex(element =>{
+        return element.toLowerCase() == header.toLowerCase();
+    })
+    if (index == -1) {
+        return false
     }
-    return false;
-
+    return true
 }
 
 function check_optional_header(header) {
-    if (optional_headers.includes(header)) {
-        return true;
+    const index = optional_headers.findIndex(element =>{
+        return element.toLowerCase() == header.toLowerCase();
+    })
+    if (index == -1) {
+        return false
     }
-    return false;
+    return true
 }
 
 function check_disallowed_header(header) {
-    if (disallowed_headers.includes(header)) {
-        return true;
+    const index = disallowed_headers.findIndex(element =>{
+        return element.toLowerCase() == header.toLowerCase();
+    })
+    if (index == -1) {
+        return false
     }
-    return false;
+    return true
+
 }
 
 export default {headers_to_json, validateheaders}
