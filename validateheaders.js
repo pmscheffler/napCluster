@@ -62,7 +62,7 @@ function headers_to_json(r) {
 
 function validateheaders(r){
     for(var header in r.rawHeadersIn){
-        r.log "Checking " + header[0];
+        // r.log "Checking " + header[0];
         const allGoodHeaders = required_headers.concat(optional_headers);
         const index = allGoodHeaders.findIndex(element =>{
             return element.toLowerCase() == header[0].toLowerCase();
