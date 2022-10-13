@@ -62,13 +62,14 @@ function headers_to_json(r) {
 
 function validateheaders(r){
     for(var header in r.rawHeadersIn){
+        r.log "Checking " + header[0];
         const allGoodHeaders = required_headers.concat(optional_headers);
         const index = allGoodHeaders.findIndex(element =>{
             return element.toLowerCase() == header[0].toLowerCase();
         })
         if (index == -1) {
-            const newHeader = ["F5_VIOLATION_Unexpected_Header", "Invalid"];
-            r.rawHeadersIn.push(newHeader);
+            const newHeader = ["F5_VIOLATION_Unexpected_Header", header[0]];
+            r.rawHeadersOut.push(newHeader);
             // return "F5_VIOLATION_Unexpected_Header";
             return header[0];
         }
