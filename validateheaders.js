@@ -70,8 +70,8 @@ function validateheaders(r){
         if (index == -1) {
             const newHeader = ["F5_VIOLATION_Unexpected_Header", header[0]];
             r.rawHeadersOut.push(newHeader);
-            // return "F5_VIOLATION_Unexpected_Header";
-            return header[0];
+            return "F5_VIOLATION_Unexpected_Header";
+            // return header[0];
         }
     }
     return "";
