@@ -15,8 +15,8 @@
 
 */
 
-let required_headers = ['required-header-test'];
-let optional_headers = ['optional-header-test'];
+let required_headers = ['required-header-test', 'user-agent', 'host', 'accept', 'accept-encoding','cache-control', 'accept-language', 'referer', 'pragma', 'upgrade-insecure-requests'];
+let optional_headers = ['optional-header-test', 'x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-forwarded-port', 'sec-fetch-site', 'sec-fetch-mode', 'sec-fetch-dest'];
 let disallowed_headers = ['disallowed-header-test'];
 
 function add_header(header, headerType){
@@ -70,18 +70,18 @@ function validateheaders(r){
 }
 
 function check_required_headers(){
-    // if (required_headers.includes(header)) {
-    //     return true;
-    // }
-    // return false;
+    if (required_headers.includes(header)) {
+        return true;
+    }
+    return false;
 
 }
 
 function check_optional_header() {
-    // if (optional_headers.includes(header)) {
-    //     return true;
-    // }
-    // return false;
+    if (optional_headers.includes(header)) {
+        return true;
+    }
+    return false;
 }
 
 function check_disallowed_header(header) {
