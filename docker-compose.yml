@@ -33,6 +33,7 @@ services:
     deploy:
       replicas: 2
     volumes:
+      - ./pool.conf:/etc/nginx/nginx.conf:ro
       - ./validateheaders.js:/etc/nginx/validateheaders.js:ro
 
     
